@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Test_Be_VNR.Models.KhoaHoc>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <li><a href="/home/monhoc/@item.ID" data-id="@item.ID">@item.TenKhoaHoc</a></li>
+    }
+}
+

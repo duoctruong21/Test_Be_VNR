@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Test_Be_VNR.Models.MonHoc>
+
+
+<style>
+    .boxShadow-r {
+        padding: 10px;
+        box-shadow: -7px 4px 7px #ccc inset;
+    }
+    .boxShadow-l {
+        padding: 10px;
+        box-shadow: 7px 4px 7px #ccc inset;
+    }
+    .borderSetting:first-child {
+        border-right: 2px solid;
+    }
+</style>
+
+<div class="row d-flex justify-content-between" style="height: 70vh">
+    <div class="col-md-7 boxShadow-r">
+        <div class="col-md-12 border-bottom border-5 border-warning-subtle"><h2>Khóa học : @ViewBag.KhocHoc</h2></div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 d-flex flex-column flex-wrap" style="height:60px">
+                    @if (Model != null)
+                    {
+                        var i = 1;
+                        var j=1;
+                        <div class="col-md-6 borderSetting">
+                            @foreach (var item in Model)
+                            {
+                                if (i <= (Convert.ToInt32(Model.Count() / 2)))
+                                {
+                                    <p class="w-50">@i .  @item.TenMonHoc</p>
+                                }
+                                i++;
+                            }
+                        </div>
+                        <div class="col-md-6 borderSetting">
+                            @foreach (var item in Model)
+                            {
+                                
+                                if (j > (Convert.ToInt32(Model.Count() / 2)))
+                                {
+                                    <p class="w-50">@j .  @item.TenMonHoc</p>
+                                }
+                                j++;
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 boxShadow-l">
+        <div class="col-md-12 border-bottom border-5 border-warning-subtle"><h2>Khóa học</h2></div>
+        <div class="col-md-12">
+            <ul>
+                @Html.Action("KhoaHoc", "Home")
+            </ul>
+        </div>
+    </div>
+</div>
